@@ -1,14 +1,14 @@
 #include <iostream>
 #include <pcap/pcap.h>
 #include <pcappp/Pcap.h>
-#include <pcappp/PcapInterfaceCollection.h>
 
 int main()
 {
     std::cout << pcappp::Pcap::Version() << std::endl;
-    auto interfeces = pcappp::PcapInterfaceCollection::FindInterfaces();
-    for (auto &interface_ : *interfeces)
+    auto interface_list = pcappp::Pcap::FindInterfaces();
+    for (auto &interface_ : *interface_list)
     {
-        std::cout << interface_->name << std::endl;
+        std::cout << interface_->Name() << std::endl;
+        std::cout << interface_->Description() << std::endl;
     }
 }
