@@ -86,5 +86,7 @@ namespace
 
 std::shared_ptr<base::IEnumerator<pcap_if_t *>> net::PcapInterfaceCollection::GetEnumerator()
 {
-    return std::shared_ptr<base::IEnumerator<pcap_if_t *>>{new Enumerator{_interface_link_list_head_node.get()}};
+    return std::shared_ptr<base::IEnumerator<pcap_if_t *>>{
+        new Enumerator{_interface_link_list_head_node.get()},
+    };
 }
