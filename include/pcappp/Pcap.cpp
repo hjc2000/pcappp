@@ -1,5 +1,5 @@
 #include "Pcap.h"
-#include <pcappp/PcapInitializer.h>
+#include <PcapInitializer.h>
 
 std::string net::Pcap::Version()
 {
