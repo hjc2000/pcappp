@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-namespace net
+namespace pcappp
 {
     class Pcap
     {
@@ -10,4 +10,4 @@ namespace net
         /// @return
         static std::string Version();
     };
-} // namespace net
+} // namespace pcappp

@@ -1,6 +1,6 @@
 #include "PcapInitializer.h"
 
-void net::PcapInitializer::Initialize()
+void pcappp::PcapInitializer::Initialize()
 {
     std::lock_guard l{_lock};
     if (_initialized)

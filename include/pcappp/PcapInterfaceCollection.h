@@ -3,7 +3,7 @@
 #include <memory>
 #include <pcap/pcap.h>
 
-namespace net
+namespace pcappp
 {
     /// @brief 网络接口集合
     class PcapInterfaceCollection :
@@ -26,4 +26,4 @@ namespace net
         /// @return
         std::shared_ptr<base::IEnumerator<pcap_if_t *>> GetEnumerator() override;
     };
-} // namespace net
+} // namespace pcappp

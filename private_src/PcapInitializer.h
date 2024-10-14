@@ -4,7 +4,7 @@
 #include <stdexcept>
 #include <string>
 
-namespace net
+namespace pcappp
 {
     /// @brief 初始化器
     class PcapInitializer
@@ -20,4 +20,4 @@ namespace net
         /// @note 本函数幂等且线程安全。
         static void Initialize();
     };
-} // namespace net
+} // namespace pcappp

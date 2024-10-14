@@ -5,8 +5,8 @@
 
 int main()
 {
-    std::cout << net::Pcap::Version() << std::endl;
-    auto interfeces = net::PcapInterfaceCollection::FindInterfaces();
+    std::cout << pcappp::Pcap::Version() << std::endl;
+    auto interfeces = pcappp::PcapInterfaceCollection::FindInterfaces();
     for (auto &interface_ : *interfeces)
     {
         std::cout << interface_->name << std::endl;

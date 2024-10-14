@@ -1,8 +1,8 @@
 #include "Pcap.h"
 #include <PcapInitializer.h>
 
-std::string net::Pcap::Version()
+std::string pcappp::Pcap::Version()
 {
-    net::PcapInitializer::Initialize();
+    pcappp::PcapInitializer::Initialize();
     return std::string{pcap_lib_version()};
 }

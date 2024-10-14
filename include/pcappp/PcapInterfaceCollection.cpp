@@ -2,9 +2,9 @@
 #include <iostream>
 #include <PcapInitializer.h>
 
-net::PcapInterfaceCollection::PcapInterfaceCollection(pcap_if_t *interfece_link_list_head_node)
+pcappp::PcapInterfaceCollection::PcapInterfaceCollection(pcap_if_t *interfece_link_list_head_node)
 {
-    net::PcapInitializer::Initialize();
+    pcappp::PcapInitializer::Initialize();
 
     _interface_link_list_head_node = std::shared_ptr<pcap_if_t>{
         interfece_link_list_head_node,
@@ -15,7 +15,7 @@ net::PcapInterfaceCollection::PcapInterfaceCollection(pcap_if_t *interfece_link_
     };
 }
 
-std::shared_ptr<net::PcapInterfaceCollection const> net::PcapInterfaceCollection::FindInterfaces()
+std::shared_ptr<pcappp::PcapInterfaceCollection const> pcappp::PcapInterfaceCollection::FindInterfaces()
 {
     char error_message_buffer[1024]{};
 
@@ -84,7 +84,7 @@ namespace
     };
 } // namespace
 
-std::shared_ptr<base::IEnumerator<pcap_if_t *>> net::PcapInterfaceCollection::GetEnumerator()
+std::shared_ptr<base::IEnumerator<pcap_if_t *>> pcappp::PcapInterfaceCollection::GetEnumerator()
 {
     return std::shared_ptr<base::IEnumerator<pcap_if_t *>>{
         new Enumerator{_interface_link_list_head_node.get()},
