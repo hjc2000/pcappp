@@ -17,7 +17,10 @@ std::shared_ptr<base::IEnumerable<std::shared_ptr<pcappp::IPcapInterface>>> pcap
         new base::List<std::shared_ptr<pcappp::IPcapInterface>>{},
     };
 
+    // 获取网络接口裸指针集合
     auto raw_interfaces = pcappp::PcapInterfaceCollection::FindInterfaces();
+
+    // 将裸指针用包装类包装起来
     for (auto &raw_interface : *raw_interfaces)
     {
         std::shared_ptr<pcappp::PcapInterface> interface_{
