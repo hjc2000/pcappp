@@ -1,10 +1,11 @@
 #pragma once
+#include <base/string/ICanToString.h>
 #include <string>
 
 namespace pcappp
 {
     /// @brief pcap 网络接口的接口类。
-    class IPcapInterface
+    class IPcapInterface : public base::ICanToString
     {
     public:
         /// @brief 接口名
@@ -14,5 +15,7 @@ namespace pcappp
         /// @brief 描述信息
         /// @return
         virtual std::string Description() const = 0;
+
+        std::string ToString() override;
     };
 } // namespace pcappp
