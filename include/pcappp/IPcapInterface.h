@@ -1,11 +1,11 @@
 #pragma once
-#include <base/string/ICanToString.h>
+#include <base/string/Json.h>
 #include <string>
 
 namespace pcappp
 {
     /// @brief pcap 网络接口的接口类。
-    class IPcapInterface : public base::ICanToString
+    class IPcapInterface : public base::IJsonSerializable
     {
     public:
         /// @brief 接口名
@@ -16,6 +16,6 @@ namespace pcappp
         /// @return
         virtual std::string Description() const = 0;
 
-        std::string ToString() override;
+        base::Json ToJson() override;
     };
 } // namespace pcappp

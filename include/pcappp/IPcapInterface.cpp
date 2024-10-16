@@ -1,9 +1,11 @@
 #include "IPcapInterface.h"
-#include <format>
 
-std::string pcappp::IPcapInterface::ToString()
+base::Json pcappp::IPcapInterface::ToJson()
 {
-    return std::format("{}\t({})",
-                       Name(),
-                       Description());
+    base::Json ret{
+        {"Name", Name()},
+        {"Description", Description()},
+    };
+
+    return ret;
 }
