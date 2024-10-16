@@ -1,4 +1,5 @@
 #pragma once
+#include <base/container/List.h>
 #include <PcapInterfaceCollection.h>
 #include <pcappp/IPcapInterface.h>
 
@@ -11,6 +12,7 @@ namespace pcappp
     private:
         std::string _name;
         std::string _description;
+        base::List<std::shared_ptr<pcappp::ISocketAddress>> _list;
 
     public:
         /// @brief
@@ -33,6 +35,13 @@ namespace pcappp
         std::string Description() const override
         {
             return _description;
+        }
+
+        /// @brief 迭代设备地址集合。
+        /// @return 返回设备地址的可迭代集合的引用。
+        base::IEnumerable<std::shared_ptr<pcappp::ISocketAddress>> const &Addresses() override
+        {
+            return _list;
         }
     };
 } // namespace pcappp

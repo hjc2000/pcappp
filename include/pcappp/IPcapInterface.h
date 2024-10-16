@@ -1,5 +1,7 @@
 #pragma once
+#include <base/container/iterator/IEnumerable.h>
 #include <base/string/Json.h>
+#include <pcappp/ISocketAddress.h>
 #include <string>
 
 namespace pcappp
@@ -18,5 +20,7 @@ namespace pcappp
         virtual std::string Description() const = 0;
 
         base::Json ToJson() override;
+
+        virtual base::IEnumerable<std::shared_ptr<pcappp::ISocketAddress>> const &Addresses() = 0;
     };
 } // namespace pcappp
