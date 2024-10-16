@@ -1,7 +1,7 @@
 #pragma once
 #include <base/container/iterator/IEnumerable.h>
 #include <base/string/Json.h>
-#include <pcappp/ISocketAddress.h>
+#include <pcappp/IPcapAddress.h>
 #include <string>
 
 namespace pcappp
@@ -23,6 +23,6 @@ namespace pcappp
 
         /// @brief 迭代设备地址集合。
         /// @return 返回设备地址的可迭代集合的引用。
-        virtual base::IEnumerable<std::shared_ptr<pcappp::ISocketAddress>> const &Addresses() = 0;
+        virtual base::IEnumerable<std::shared_ptr<pcappp::IPcapAddress>> const &Addresses() = 0;
     };
 } // namespace pcappp

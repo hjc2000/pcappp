@@ -15,9 +15,9 @@ namespace pcappp
     public:
         /// @brief 会将 addr 指向的对象的字段深拷贝到本对象中。
         /// @param addr
-        SocketAddress(sockaddr const *addr)
-            : _sa_family(addr->sa_family),
-              _sa_data(reinterpret_cast<uint8_t const *>(addr->sa_data), 0, 14)
+        SocketAddress(sockaddr const &addr)
+            : _sa_family(addr.sa_family),
+              _sa_data(reinterpret_cast<uint8_t const *>(addr.sa_data), 0, 14)
         {
         }
 
