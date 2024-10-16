@@ -18,20 +18,7 @@ namespace pcappp
     public:
         /// @brief
         /// @param interfece_ 被包装的网络接口。
-        PcapInterface(pcap_if_t *interfece_)
-            : _name(interfece_->name),
-              _description(interfece_->description)
-        {
-            pcap_addr *current_addr_node = interfece_->addresses;
-            while (current_addr_node != nullptr)
-            {
-                _list.Add(std::shared_ptr<pcappp::PcapAddress>{
-                    new pcappp::PcapAddress{*current_addr_node},
-                });
-
-                current_addr_node = current_addr_node->next;
-            }
-        }
+        PcapInterface(pcap_if_t *interfece_);
 
         /// @brief 接口名
         /// @return
