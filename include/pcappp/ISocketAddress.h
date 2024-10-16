@@ -4,7 +4,7 @@
 
 namespace pcappp
 {
-    /// @brief 套接字地址
+    /// @brief 套接字地址接口
     class ISocketAddress
     {
     public:
