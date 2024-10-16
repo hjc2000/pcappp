@@ -12,9 +12,9 @@ namespace pcappp
         base::Array<uint8_t, 14> _sa_data{};
 
     public:
-        SocketAddress(sockaddr *addr)
+        SocketAddress(sockaddr const *addr)
             : _sa_family(addr->sa_family),
-              _sa_data(reinterpret_cast<uint8_t *>(addr->sa_data), 0, 14)
+              _sa_data(reinterpret_cast<uint8_t const *>(addr->sa_data), 0, 14)
         {
         }
 
