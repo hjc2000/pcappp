@@ -9,33 +9,30 @@ namespace pcappp
         public pcappp::IPcapInterface
     {
     private:
-        std::shared_ptr<PcapInterfaceCollection const> _collection = nullptr;
-        pcap_if_t *_interfece = nullptr;
+        std::string _name;
+        std::string _description;
 
     public:
         /// @brief
         /// @param interfece_ 被包装的网络接口。
-        /// @param collection 本类需要保持住 interfece_ 所在的集合，否则到时候集合释放了，
-        /// 本类就变成引用着野指针 interfece_ 了。
-        PcapInterface(pcap_if_t *interfece_,
-                      std::shared_ptr<PcapInterfaceCollection const> collection)
+        PcapInterface(pcap_if_t *interfece_)
+            : _name(interfece_->name),
+              _description(interfece_->description)
         {
-            _interfece = interfece_;
-            _collection = collection;
         }
 
         /// @brief 接口名
         /// @return
         std::string Name() const override
         {
-            return _interfece->name;
+            return _name;
         }
 
         /// @brief 描述信息
         /// @return
         std::string Description() const override
         {
-            return _interfece->description;
+            return _description;
         }
     };
 } // namespace pcappp
