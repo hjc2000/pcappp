@@ -5,7 +5,8 @@
 namespace pcappp
 {
     /// @brief pcap 网络接口的接口类。
-    class IPcapInterface : public base::IJsonSerializable
+    class IPcapInterface :
+        public base::IJsonSerializable
     {
     public:
         /// @brief 接口名
