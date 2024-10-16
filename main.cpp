@@ -11,4 +11,12 @@ int main()
     {
         std::cout << interface_->ToString() << std::endl;
     }
+
+    for (auto &interface_ : *interface_list)
+    {
+        for (auto &address : interface_->Addresses())
+        {
+            std::cout << address->Address()->SaFamily() << std::endl;
+        }
+    }
 }
