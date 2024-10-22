@@ -4,8 +4,6 @@
 
 pcappp::PcapInterfaceCollection::PcapInterfaceCollection(pcap_if_t *interfece_link_list_head_node)
 {
-    pcappp::PcapInitializer::Initialize();
-
     _interface_link_list_head_node = std::shared_ptr<pcap_if_t>{
         interfece_link_list_head_node,
         [](pcap_if_t *p)
