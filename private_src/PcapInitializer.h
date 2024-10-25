@@ -1,4 +1,5 @@
 #pragma once
+#include <atomic>
 #include <mutex>
 #include <pcap/pcap.h>
 #include <stdexcept>
@@ -13,7 +14,7 @@ namespace pcappp
         PcapInitializer() = default;
 
         inline static std::mutex _lock;
-        inline static bool _initialized = false;
+        inline static std::atomic_bool _initialized = false;
 
     public:
         /// @brief 执行初始化

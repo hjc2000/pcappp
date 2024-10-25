@@ -2,6 +2,11 @@
 
 void pcappp::PcapInitializer::Initialize()
 {
+    if (_initialized)
+    {
+        return;
+    }
+
     std::lock_guard l{_lock};
     if (_initialized)
     {
