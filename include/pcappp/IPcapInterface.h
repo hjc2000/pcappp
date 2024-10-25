@@ -19,7 +19,7 @@ namespace pcappp
         /// @return
         virtual std::string Description() const = 0;
 
-        base::Json ToJson() override;
+        base::Json ToJson() const override;
 
         /// @brief 迭代设备地址集合。
         /// @return 返回设备地址的可迭代集合的引用。

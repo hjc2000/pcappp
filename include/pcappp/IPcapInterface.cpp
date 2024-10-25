@@ -1,6 +1,6 @@
 #include "IPcapInterface.h"
 
-base::Json pcappp::IPcapInterface::ToJson()
+base::Json pcappp::IPcapInterface::ToJson() const
 {
     base::Json ret{
         {"Name", Name()},
