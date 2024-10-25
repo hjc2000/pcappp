@@ -18,4 +18,6 @@ int main()
             std::cout << address->Address()->SaFamily() << std::endl;
         }
     }
+
+    return 0;
 }
