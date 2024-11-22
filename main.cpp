@@ -5,15 +5,15 @@
 int main()
 {
     std::cout << pcappp::Pcap::Version() << std::endl;
-    auto interface_list = pcappp::Pcap::FindInterfaces();
-    for (auto &interface_ : *interface_list)
+    std::shared_ptr<base::IEnumerable<std::shared_ptr<pcappp::IPcapInterface>>> interface_list = pcappp::Pcap::FindInterfaces();
+    for (std::shared_ptr<pcappp::IPcapInterface> &interface_ : *interface_list)
     {
         std::cout << interface_->ToString() << std::endl;
     }
 
-    for (auto &interface_ : *interface_list)
+    for (std::shared_ptr<pcappp::IPcapInterface> &interface_ : *interface_list)
     {
-        for (auto &address : interface_->Addresses())
+        for (std::shared_ptr<pcappp::IPcapAddress> const &address : interface_->Addresses())
         {
             std::cout << *address->Address() << std::endl;
         }
