@@ -19,6 +19,21 @@ pcappp::PcapInterface::PcapInterface(pcap_if_t *interfece_)
     }
 }
 
+std::string pcappp::PcapInterface::Name() const
+{
+    return _name;
+}
+
+std::string pcappp::PcapInterface::Description() const
+{
+    return _description;
+}
+
+base::IEnumerable<std::shared_ptr<pcappp::IPcapAddress>> const &pcappp::PcapInterface::Addresses() const
+{
+    return _list;
+}
+
 base::Json pcappp::PcapInterface::ToJson() const
 {
     base::Json root{
@@ -48,10 +63,16 @@ void pcappp::PcapInterface::Open()
                   PCAP_OPENFLAG_PROMISCUOUS, // promiscuous mode：混杂模式
                   1000,
                   nullptr,
-                  _error_buffer),
+                  _error_buffer.get()),
         [](pcap_t *p)
         {
+            // 在删除器中关闭设备
             pcap_close(p);
         },
     };
+
+    if (_handle == nullptr)
+    {
+        throw std::runtime_error{"打开设备失败"};
+    }
 }

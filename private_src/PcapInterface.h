@@ -15,7 +15,7 @@ namespace pcappp
         std::string _name;
         std::string _description;
         base::List<std::shared_ptr<pcappp::IPcapAddress>> _list;
-        char _error_buffer[1024]{};
+        std::unique_ptr<char[]> _error_buffer{new char[1024]{}};
 
         /// @brief 打开设备后的句柄
         std::shared_ptr<pcap_t> _handle;
@@ -27,24 +27,15 @@ namespace pcappp
 
         /// @brief 接口名
         /// @return
-        std::string Name() const override
-        {
-            return _name;
-        }
+        std::string Name() const override;
 
         /// @brief 描述信息
         /// @return
-        std::string Description() const override
-        {
-            return _description;
-        }
+        std::string Description() const override;
 
         /// @brief 迭代设备地址集合。
         /// @return 返回设备地址的可迭代集合的引用。
-        base::IEnumerable<std::shared_ptr<pcappp::IPcapAddress>> const &Addresses() const override
-        {
-            return _list;
-        }
+        base::IEnumerable<std::shared_ptr<pcappp::IPcapAddress>> const &Addresses() const override;
 
         /// @brief 序列化为 json
         /// @return

@@ -9,6 +9,7 @@ int main()
     for (std::shared_ptr<pcappp::IPcapInterface> &interface_ : *interface_list)
     {
         std::cout << interface_->ToString() << std::endl;
+        interface_->Open();
     }
 
     return 0;
