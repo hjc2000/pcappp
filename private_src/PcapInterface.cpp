@@ -26,13 +26,16 @@ base::Json pcappp::PcapInterface::ToJson() const
         {"Description", Description()},
     };
 
-    base::Json addresses_json;
-    int i = 0;
-    for (std::shared_ptr<pcappp::IPcapAddress> const &address : Addresses())
     {
-        addresses_json[i++] = address->ToJson();
+        base::Json addresses_json;
+        int i = 0;
+        for (std::shared_ptr<pcappp::IPcapAddress> const &address : Addresses())
+        {
+            addresses_json[i++] = address->ToJson();
+        }
+
+        root["Addreses"] = addresses_json;
     }
 
-    root["Addreses"] = addresses_json;
     return root;
 }
