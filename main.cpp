@@ -15,7 +15,7 @@ int main()
     {
         for (auto &address : interface_->Addresses())
         {
-            std::cout << address->Address()->SaFamily() << std::endl;
+            std::cout << *address->Address() << std::endl;
         }
     }
 

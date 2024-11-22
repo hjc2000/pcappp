@@ -1,24 +1,53 @@
 #include "PcapAddress.h"
+#include <convert.h>
 
 pcappp::PcapAddress::PcapAddress(pcap_addr const &addr)
 {
     if (addr.addr != nullptr)
     {
-        _address = std::shared_ptr<ISocketAddress>{new SocketAddress{*addr.addr}};
+        try
+        {
+            _address = pcappp::ToEndPoint(*addr.addr);
+        }
+        catch (std::exception const &e)
+        {
+            std::cout << e.what() << std::endl;
+        }
     }
 
     if (addr.netmask != nullptr)
     {
-        _netmask = std::shared_ptr<ISocketAddress>{new SocketAddress{*addr.netmask}};
+        try
+        {
+            _netmask = pcappp::ToEndPoint(*addr.netmask);
+        }
+        catch (std::exception const &e)
+        {
+            std::cout << e.what() << std::endl;
+        }
     }
 
     if (addr.broadaddr != nullptr)
     {
-        _broadcast_address = std::shared_ptr<ISocketAddress>{new SocketAddress{*addr.broadaddr}};
+        try
+        {
+            _broadcast_address = pcappp::ToEndPoint(*addr.broadaddr);
+        }
+        catch (std::exception const &e)
+        {
+            std::cout << e.what() << std::endl;
+        }
     }
 
     if (addr.dstaddr != nullptr)
     {
-        _destination_address = std::shared_ptr<ISocketAddress>{new SocketAddress{*addr.dstaddr}};
+        try
+        {
+            _destination_address = pcappp::ToEndPoint(*addr.dstaddr);
+        }
+        catch (std::exception const &e)
+        {
+            std::cout << e.what() << std::endl;
+        }
     }
 }
