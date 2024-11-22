@@ -10,10 +10,11 @@ pcappp::PcapInterface::PcapInterface(pcap_if_t *interfece_)
     pcap_addr *current_addr_node = interfece_->addresses;
     while (current_addr_node != nullptr)
     {
-        _list.Add(std::shared_ptr<pcappp::PcapAddress>{
+        std::shared_ptr<pcappp::PcapAddress> pcap_addr{
             new pcappp::PcapAddress{*current_addr_node},
-        });
+        };
 
+        _list.Add(pcap_addr);
         current_addr_node = current_addr_node->next;
     }
 }
