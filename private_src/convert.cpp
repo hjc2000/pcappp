@@ -13,7 +13,13 @@ base::IPAddress pcappp::ToIPAddress(sockaddr const &addr)
     case AF_INET:
         {
             sockaddr_in const *in_addr = reinterpret_cast<sockaddr_in const *>(&addr);
-            break;
+            base::Array<uint8_t, 4> buffer{};
+
+            std::copy(reinterpret_cast<uint8_t const *>(&in_addr->sin_addr.s_addr),
+                      reinterpret_cast<uint8_t const *>(&in_addr->sin_addr.s_addr) + 4,
+                      buffer.Buffer());
+
+            return base::IPAddress{std::endian::big, buffer};
         }
     case AF_IMPLINK:
         {
@@ -102,7 +108,13 @@ base::IPAddress pcappp::ToIPAddress(sockaddr const &addr)
     case AF_INET6:
         {
             sockaddr_in6 const *in_addr = reinterpret_cast<sockaddr_in6 const *>(&addr);
-            break;
+            base::Array<uint8_t, 16> buffer{};
+
+            std::copy(reinterpret_cast<uint8_t const *>(&in_addr->sin6_addr.s6_addr),
+                      reinterpret_cast<uint8_t const *>(&in_addr->sin6_addr.s6_addr) + 16,
+                      buffer.Buffer());
+
+            return base::IPAddress{std::endian::big, buffer};
         }
     case AF_CLUSTER:
         {
