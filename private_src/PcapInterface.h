@@ -36,9 +36,13 @@ namespace pcappp
 
         /// @brief 迭代设备地址集合。
         /// @return 返回设备地址的可迭代集合的引用。
-        base::IEnumerable<std::shared_ptr<pcappp::IPcapAddress>> const &Addresses() override
+        base::IEnumerable<std::shared_ptr<pcappp::IPcapAddress>> const &Addresses() const override
         {
             return _list;
         }
+
+        /// @brief 序列化为 json
+        /// @return
+        base::Json ToJson() const override;
     };
 } // namespace pcappp

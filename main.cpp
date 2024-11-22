@@ -11,13 +11,5 @@ int main()
         std::cout << interface_->ToString() << std::endl;
     }
 
-    for (std::shared_ptr<pcappp::IPcapInterface> &interface_ : *interface_list)
-    {
-        for (std::shared_ptr<pcappp::IPcapAddress> const &address : interface_->Addresses())
-        {
-            std::cout << *address->Address() << std::endl;
-        }
-    }
-
     return 0;
 }

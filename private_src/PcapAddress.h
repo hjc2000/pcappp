@@ -35,5 +35,9 @@ namespace pcappp
         {
             return _destination_address;
         }
+
+        /// @brief 序列化为 json
+        /// @return
+        base::Json ToJson() const override;
     };
 } // namespace pcappp
