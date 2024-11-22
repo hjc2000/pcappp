@@ -1,5 +1,6 @@
 #pragma once
 #include <base/container/List.h>
+#include <pcap/pcap.h>
 #include <PcapAddress.h>
 #include <PcapInterfaceCollection.h>
 #include <pcappp/IPcapInterface.h>
@@ -14,6 +15,10 @@ namespace pcappp
         std::string _name;
         std::string _description;
         base::List<std::shared_ptr<pcappp::IPcapAddress>> _list;
+        char _error_buffer[1024]{};
+
+        /// @brief 打开设备后的句柄
+        std::shared_ptr<pcap_t> _handle;
 
     public:
         /// @brief

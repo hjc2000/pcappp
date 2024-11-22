@@ -42,4 +42,16 @@ base::Json pcappp::PcapInterface::ToJson() const
 
 void pcappp::PcapInterface::Open()
 {
+    _handle = std::shared_ptr<pcap_t>{
+        pcap_open(Name().c_str(),
+                  65536,                     // 捕获缓冲区大小
+                  PCAP_OPENFLAG_PROMISCUOUS, // promiscuous mode：混杂模式
+                  1000,
+                  nullptr,
+                  _error_buffer),
+        [](pcap_t *p)
+        {
+            pcap_close(p);
+        },
+    };
 }
