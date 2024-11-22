@@ -44,5 +44,8 @@ namespace pcappp
         /// @brief 序列化为 json
         /// @return
         base::Json ToJson() const override;
+
+        /// @brief 用默认方式打开设备。
+        void Open() override;
     };
 } // namespace pcappp

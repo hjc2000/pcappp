@@ -39,3 +39,7 @@ base::Json pcappp::PcapInterface::ToJson() const
 
     return root;
 }
+
+void pcappp::PcapInterface::Open()
+{
+}
