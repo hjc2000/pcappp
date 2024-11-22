@@ -12,7 +12,9 @@ std::string pcappp::Pcap::Version()
 std::shared_ptr<base::IEnumerable<std::shared_ptr<pcappp::IPcapInterface>>> pcappp::Pcap::FindInterfaces()
 {
     pcappp::PcapInitializer::Initialize();
-    std::shared_ptr<base::List<std::shared_ptr<pcappp::IPcapInterface>>> interface_list{new base::List<std::shared_ptr<pcappp::IPcapInterface>>{}};
+    std::shared_ptr<base::List<std::shared_ptr<pcappp::IPcapInterface>>> interface_list{
+        new base::List<std::shared_ptr<pcappp::IPcapInterface>>{},
+    };
 
     // 获取网络接口裸指针集合
     std::shared_ptr<pcappp::PcapInterfaceCollection const> raw_interfaces = pcappp::PcapInterfaceCollection::FindInterfaces();
