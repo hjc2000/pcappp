@@ -49,7 +49,7 @@ base::Json pcappp::PcapInterface::ToJson() const
             addresses_json[i++] = address->ToJson();
         }
 
-        root["Addreses"] = addresses_json;
+        root["Addresses"] = addresses_json;
     }
 
     return root;
