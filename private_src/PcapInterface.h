@@ -15,7 +15,7 @@ namespace pcappp
         std::string _name;
         std::string _description;
         base::List<std::shared_ptr<pcappp::IPcapAddress>> _list;
-        std::unique_ptr<char[]> _error_buffer{new char[1024]{}};
+        std::unique_ptr<char[]> _error_buffer{new char[PCAP_ERRBUF_SIZE]{}};
 
         /// @brief 打开设备后的句柄
         std::shared_ptr<pcap_t> _handle;

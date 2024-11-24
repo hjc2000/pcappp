@@ -75,4 +75,8 @@ void pcappp::PcapInterface::Open()
     {
         throw std::runtime_error{"打开设备失败"};
     }
+
+    /* 打开设备后的下一步可能会用到的函数
+     * pcap_next_ex
+     */
 }
