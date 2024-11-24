@@ -98,3 +98,8 @@ int pcappp::PcapInterface::CaptureOnePacket()
 
     return result;
 }
+
+pcappp::ICaptureResult const &pcappp::PcapInterface::CaptureResult() const
+{
+    return _capture_result;
+}

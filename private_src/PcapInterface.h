@@ -46,6 +46,12 @@ namespace pcappp
         /// @brief 用默认方式打开设备。
         void Open() override;
 
+        /// @brief 捕获一个包。
+        /// @return
         int CaptureOnePacket();
+
+        /// @brief 调用 CaptureOnePacket 方法捕获包后从这里读取捕获结果。
+        /// @return
+        pcappp::ICaptureResult const &CaptureResult() const;
     };
 } // namespace pcappp
