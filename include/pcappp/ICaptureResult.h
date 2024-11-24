@@ -1,5 +1,5 @@
 #pragma once
-#include <base/stream/Span.h>
+#include <base/stream/ReadOnlySpan.h>
 #include <chrono>
 #include <cstdint>
 
@@ -21,12 +21,12 @@ namespace pcappp
 
         /// @brief 包的实际长度。
         /// @note 包可能未被完全捕获，实际捕获的长度为 CaptureLength，
-        /// 本属性是包的完整长度，CaptureLength 会小于等于本属性.
+        /// 本属性是包的完整长度，CaptureLength 会小于等于本属性。
         /// @return
         virtual int32_t PacketLength() const = 0;
 
         /// @brief 捕获到的数据装在这个缓冲区中。
         /// @return
-        virtual base::Span Buffer() const = 0;
+        virtual base::ReadOnlySpan Buffer() const = 0;
     };
 } // namespace pcappp

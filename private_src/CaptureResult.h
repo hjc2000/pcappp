@@ -13,13 +13,20 @@ namespace pcappp
         int32_t _packet_length = 0;
 
         /// @brief 捕获到的数据放在此缓冲区
-        uint8_t *_buffer = nullptr;
+        uint8_t const *_buffer = nullptr;
 
         /// @brief _buffer 的大小。
         int _buffer_size = 0;
 
     public:
-        CaptureResult(pcap_pkthdr packet_infos, uint8_t *buffer, int buffer_size);
+        CaptureResult() = default;
+
+        CaptureResult(pcap_pkthdr const &packet_infos,
+                      uint8_t const *buffer,
+                      int buffer_size);
+
+        CaptureResult(CaptureResult const &o);
+        CaptureResult &operator=(CaptureResult const &o);
 
         /// @brief 时间戳
         /// @return
@@ -37,6 +44,6 @@ namespace pcappp
 
         /// @brief 捕获到的数据装在这个缓冲区中。
         /// @return
-        base::Span Buffer() const override;
+        base::ReadOnlySpan Buffer() const override;
     };
 } // namespace pcappp

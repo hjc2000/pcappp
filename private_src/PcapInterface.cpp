@@ -80,3 +80,21 @@ void pcappp::PcapInterface::Open()
      * pcap_next_ex
      */
 }
+
+int pcappp::PcapInterface::CaptureOnePacket()
+{
+    pcap_pkthdr *packet_infos = nullptr;
+    uint8_t const *buffer = nullptr;
+
+    int result = pcap_next_ex(_handle.get(),
+                              &packet_infos,
+                              &buffer);
+
+    _capture_result = pcappp::CaptureResult{
+        *packet_infos,
+        buffer,
+        65536,
+    };
+
+    return result;
+}

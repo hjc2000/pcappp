@@ -1,5 +1,6 @@
 #pragma once
 #include <base/container/List.h>
+#include <CaptureResult.h>
 #include <pcap/pcap.h>
 #include <PcapAddress.h>
 #include <PcapInterfaceCollection.h>
@@ -19,6 +20,7 @@ namespace pcappp
 
         /// @brief 打开设备后的句柄
         std::shared_ptr<pcap_t> _handle;
+        pcappp::CaptureResult _capture_result;
 
     public:
         /// @brief
@@ -43,5 +45,7 @@ namespace pcappp
 
         /// @brief 用默认方式打开设备。
         void Open() override;
+
+        int CaptureOnePacket();
     };
 } // namespace pcappp
