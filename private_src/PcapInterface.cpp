@@ -95,6 +95,11 @@ void pcappp::PcapInterface::CaptureOnePacket()
     pcappp::CaptureResultCode result_code = pcappp::CaptureResultCode::Error;
     switch (result)
     {
+    case 1:
+        {
+            result_code = pcappp::CaptureResultCode::Success;
+            break;
+        }
     case 0:
         {
             // 超时

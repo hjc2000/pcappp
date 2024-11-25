@@ -28,7 +28,7 @@ namespace pcappp
 
         /// @brief 捕获结果代码
         /// @return
-        pcappp::CaptureResultCode Code() override;
+        pcappp::CaptureResultCode Code() const override;
 
         /// @brief 时间戳
         /// @return

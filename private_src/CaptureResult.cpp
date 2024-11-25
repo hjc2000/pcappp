@@ -28,9 +28,9 @@ pcappp::CaptureResult &pcappp::CaptureResult::operator=(CaptureResult const &o)
     return *this;
 }
 
-pcappp::CaptureResultCode pcappp::CaptureResult::Code()
+pcappp::CaptureResultCode pcappp::CaptureResult::Code() const
 {
-    return pcappp::CaptureResultCode();
+    return _result_code;
 }
 
 std::chrono::microseconds pcappp::CaptureResult::Timestamp() const

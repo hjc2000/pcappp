@@ -10,6 +10,11 @@ int main()
     {
         std::cout << interface_->ToString() << std::endl;
         interface_->Open();
+        interface_->CaptureOnePacket();
+        if (interface_->CaptureResult().Code() == pcappp::CaptureResultCode::Success)
+        {
+            std::cout << "捕获成功" << std::endl;
+        }
     }
 
     return 0;

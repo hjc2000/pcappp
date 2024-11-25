@@ -20,7 +20,7 @@ namespace pcappp
     public:
         /// @brief 捕获结果代码
         /// @return
-        virtual pcappp::CaptureResultCode Code() = 0;
+        virtual pcappp::CaptureResultCode Code() const = 0;
 
         /// @brief 时间戳
         /// @return
