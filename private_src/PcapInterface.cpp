@@ -176,7 +176,6 @@ void pcappp::PcapInterface::CaptureOnePacket()
         result_code,
         *packet_infos,
         buffer,
-        65536,
     };
 }
 

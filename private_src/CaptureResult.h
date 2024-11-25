@@ -16,16 +16,12 @@ namespace pcappp
         /// @brief 捕获到的数据放在此缓冲区
         uint8_t const *_buffer = nullptr;
 
-        /// @brief _buffer 的大小。
-        int _buffer_size = 0;
-
     public:
         CaptureResult() = default;
 
         CaptureResult(pcappp::CaptureResultCode result_code,
                       pcap_pkthdr const &packet_infos,
-                      uint8_t const *buffer,
-                      int buffer_size);
+                      uint8_t const *buffer);
 
         CaptureResult(CaptureResult const &o);
         CaptureResult &operator=(CaptureResult const &o);
@@ -48,7 +44,8 @@ namespace pcappp
         /// @return
         int32_t PacketLength() const override;
 
-        /// @brief 捕获到的数据装在这个缓冲区中。
+        /// @brief 捕获到的数据装在这个缓冲区中。捕获了多少字节，ReadOnlySpan 的大小就是多少字节。
+        /// 也就是只引用装了有效数据的内存段。
         /// @return
         base::ReadOnlySpan Buffer() const override;
     };
