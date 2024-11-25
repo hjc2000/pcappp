@@ -47,8 +47,7 @@ namespace pcappp
         void Open() override;
 
         /// @brief 捕获一个包。
-        /// @return
-        int CaptureOnePacket() override;
+        void CaptureOnePacket() override;
 
         /// @brief 调用 CaptureOnePacket 方法捕获包后从这里读取捕获结果。
         /// @return

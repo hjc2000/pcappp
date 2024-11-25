@@ -5,12 +5,23 @@
 
 namespace pcappp
 {
+    enum class CaptureResultCode
+    {
+        Success,
+        Timeout,
+        Error,
+    };
+
     /// @brief 捕获结果。因为捕获缓冲区由 npcap 管理，并且只有 1 个，
     /// 所以本接口实例应该储存在网络接口对象中，一个网络接口储存一个本接口实例。
     /// 捕获后检查网络接口对象的该实例从而获取捕获结果。
     class ICaptureResult
     {
     public:
+        /// @brief 捕获结果代码
+        /// @return
+        virtual pcappp::CaptureResultCode Code() = 0;
+
         /// @brief 时间戳
         /// @return
         virtual std::chrono::microseconds Timestamp() const = 0;

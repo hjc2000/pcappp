@@ -8,6 +8,7 @@ namespace pcappp
         public pcappp::ICaptureResult
     {
     private:
+        pcappp::CaptureResultCode _result_code = pcappp::CaptureResultCode::Error;
         std::chrono::microseconds _timestamp;
         int32_t _capture_length = 0;
         int32_t _packet_length = 0;
@@ -21,12 +22,17 @@ namespace pcappp
     public:
         CaptureResult() = default;
 
-        CaptureResult(pcap_pkthdr const &packet_infos,
+        CaptureResult(pcappp::CaptureResultCode result_code,
+                      pcap_pkthdr const &packet_infos,
                       uint8_t const *buffer,
                       int buffer_size);
 
         CaptureResult(CaptureResult const &o);
         CaptureResult &operator=(CaptureResult const &o);
+
+        /// @brief 捕获结果代码
+        /// @return
+        pcappp::CaptureResultCode Code() override;
 
         /// @brief 时间戳
         /// @return

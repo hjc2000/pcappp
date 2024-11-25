@@ -81,7 +81,7 @@ void pcappp::PcapInterface::Open()
      */
 }
 
-int pcappp::PcapInterface::CaptureOnePacket()
+void pcappp::PcapInterface::CaptureOnePacket()
 {
     pcap_pkthdr *packet_infos = nullptr;
     uint8_t const *buffer = nullptr;
@@ -90,57 +90,88 @@ int pcappp::PcapInterface::CaptureOnePacket()
                               &packet_infos,
                               &buffer);
 
-    _capture_result = pcappp::CaptureResult{
-        *packet_infos,
-        buffer,
-        65536,
-    };
-
+    pcappp::CaptureResultCode result_code = pcappp::CaptureResultCode::Error;
     switch (result)
     {
     case 0:
         {
             // 超时
+            result_code = pcappp::CaptureResultCode::Timeout;
+            break;
         }
     case PCAP_ERROR:
         {
+            result_code = pcappp::CaptureResultCode::Error;
+            break;
         }
     case PCAP_ERROR_BREAK:
         {
+            result_code = pcappp::CaptureResultCode::Error;
+            break;
         }
     case PCAP_ERROR_NOT_ACTIVATED:
         {
+            result_code = pcappp::CaptureResultCode::Error;
+            break;
         }
     case PCAP_ERROR_ACTIVATED:
         {
+            result_code = pcappp::CaptureResultCode::Error;
+            break;
         }
     case PCAP_ERROR_NO_SUCH_DEVICE:
         {
+            result_code = pcappp::CaptureResultCode::Error;
+            break;
         }
     case PCAP_ERROR_RFMON_NOTSUP:
         {
+            result_code = pcappp::CaptureResultCode::Error;
+            break;
         }
     case PCAP_ERROR_NOT_RFMON:
         {
+            result_code = pcappp::CaptureResultCode::Error;
+            break;
         }
     case PCAP_ERROR_PERM_DENIED:
         {
+            result_code = pcappp::CaptureResultCode::Error;
+            break;
         }
     case PCAP_ERROR_IFACE_NOT_UP:
         {
+            result_code = pcappp::CaptureResultCode::Error;
+            break;
         }
     case PCAP_ERROR_CANTSET_TSTAMP_TYPE:
         {
+            result_code = pcappp::CaptureResultCode::Error;
+            break;
         }
     case PCAP_ERROR_PROMISC_PERM_DENIED:
         {
+            result_code = pcappp::CaptureResultCode::Error;
+            break;
         }
     case PCAP_ERROR_TSTAMP_PRECISION_NOTSUP:
         {
+            result_code = pcappp::CaptureResultCode::Error;
+            break;
+        }
+    default:
+        {
+            result_code = pcappp::CaptureResultCode::Error;
+            break;
         }
     };
 
-    return result;
+    _capture_result = pcappp::CaptureResult{
+        result_code,
+        *packet_infos,
+        buffer,
+        65536,
+    };
 }
 
 pcappp::ICaptureResult const &pcappp::PcapInterface::CaptureResult() const

@@ -7,10 +7,6 @@
 
 namespace pcappp
 {
-    enum class CaptureResultCode
-    {
-    };
-
     /// @brief pcap 网络接口的接口类。
     class IPcapInterface :
         public base::IJsonSerializable
@@ -34,8 +30,7 @@ namespace pcappp
         virtual void Open() = 0;
 
         /// @brief 捕获一个包。
-        /// @return
-        virtual int CaptureOnePacket() = 0;
+        virtual void CaptureOnePacket() = 0;
 
         /// @brief 调用 CaptureOnePacket 方法捕获包后从这里读取捕获结果。
         /// @return
