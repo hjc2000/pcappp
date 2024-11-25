@@ -27,6 +27,7 @@ namespace pcappp
         /// @param interfece_ 被包装的网络接口。
         PcapInterface(pcap_if_t *interfece_);
 
+#pragma region 信息
         /// @brief 接口名
         /// @return
         std::string Name() const override;
@@ -42,15 +43,18 @@ namespace pcappp
         /// @brief 序列化为 json
         /// @return
         base::Json ToJson() const override;
+#pragma endregion
 
         /// @brief 用默认方式打开设备。
         void Open() override;
 
+#pragma region 捕获
         /// @brief 捕获一个包。
         void CaptureOnePacket() override;
 
         /// @brief 调用 CaptureOnePacket 方法捕获包后从这里读取捕获结果。
         /// @return
         pcappp::ICaptureResult const &CaptureResult() const override;
+#pragma endregion
     };
 } // namespace pcappp

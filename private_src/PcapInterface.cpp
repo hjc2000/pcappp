@@ -19,6 +19,8 @@ pcappp::PcapInterface::PcapInterface(pcap_if_t *interfece_)
     }
 }
 
+#pragma region 信息
+
 std::string pcappp::PcapInterface::Name() const
 {
     return _name;
@@ -55,6 +57,8 @@ base::Json pcappp::PcapInterface::ToJson() const
     return root;
 }
 
+#pragma endregion
+
 void pcappp::PcapInterface::Open()
 {
     _handle = std::shared_ptr<pcap_t>{
@@ -80,6 +84,8 @@ void pcappp::PcapInterface::Open()
      * pcap_next_ex
      */
 }
+
+#pragma region 捕获
 
 void pcappp::PcapInterface::CaptureOnePacket()
 {
@@ -178,3 +184,5 @@ pcappp::ICaptureResult const &pcappp::PcapInterface::CaptureResult() const
 {
     return _capture_result;
 }
+
+#pragma endregion
