@@ -1,11 +1,16 @@
 #pragma once
 #include <base/container/iterator/IEnumerable.h>
 #include <base/string/Json.h>
+#include <pcappp/ICaptureResult.h>
 #include <pcappp/IPcapAddress.h>
 #include <string>
 
 namespace pcappp
 {
+    enum class CaptureResultCode
+    {
+    };
+
     /// @brief pcap 网络接口的接口类。
     class IPcapInterface :
         public base::IJsonSerializable
@@ -27,5 +32,13 @@ namespace pcappp
 
         /// @brief 用默认方式打开设备。
         virtual void Open() = 0;
+
+        /// @brief 捕获一个包。
+        /// @return
+        virtual int CaptureOnePacket() = 0;
+
+        /// @brief 调用 CaptureOnePacket 方法捕获包后从这里读取捕获结果。
+        /// @return
+        virtual pcappp::ICaptureResult const &CaptureResult() const = 0;
     };
 } // namespace pcappp

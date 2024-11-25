@@ -96,6 +96,50 @@ int pcappp::PcapInterface::CaptureOnePacket()
         65536,
     };
 
+    switch (result)
+    {
+    case 0:
+        {
+            // 超时
+        }
+    case PCAP_ERROR:
+        {
+        }
+    case PCAP_ERROR_BREAK:
+        {
+        }
+    case PCAP_ERROR_NOT_ACTIVATED:
+        {
+        }
+    case PCAP_ERROR_ACTIVATED:
+        {
+        }
+    case PCAP_ERROR_NO_SUCH_DEVICE:
+        {
+        }
+    case PCAP_ERROR_RFMON_NOTSUP:
+        {
+        }
+    case PCAP_ERROR_NOT_RFMON:
+        {
+        }
+    case PCAP_ERROR_PERM_DENIED:
+        {
+        }
+    case PCAP_ERROR_IFACE_NOT_UP:
+        {
+        }
+    case PCAP_ERROR_CANTSET_TSTAMP_TYPE:
+        {
+        }
+    case PCAP_ERROR_PROMISC_PERM_DENIED:
+        {
+        }
+    case PCAP_ERROR_TSTAMP_PRECISION_NOTSUP:
+        {
+        }
+    };
+
     return result;
 }
 
