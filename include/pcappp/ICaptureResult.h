@@ -2,6 +2,7 @@
 #include <base/stream/ReadOnlySpan.h>
 #include <chrono>
 #include <cstdint>
+#include <pcap/dlt.h>
 
 namespace pcappp
 {
@@ -10,6 +11,37 @@ namespace pcappp
         Success,
         Timeout,
         Error,
+    };
+
+    /// @brief 链路层类型。
+    /// @note https://www.tcpdump.org/linktypes.html
+    enum class LinkTypes
+    {
+        /// @brief 没有链路层协议。
+        LINKTYPE_NULL = 0,
+
+        /// @brief 以太网。
+        LINKTYPE_ETHERNET = 1,
+        LINKTYPE_EXP_ETHERNET = 2,
+        LINKTYPE_AX25 = 3,
+        LINKTYPE_PRONET = 4,
+        LINKTYPE_CHAOS = 5,
+        LINKTYPE_IEEE802_5 = 6,
+        LINKTYPE_ARCNET_BSD = 7,
+        LINKTYPE_SLIP = 8,
+        LINKTYPE_PPP = 9,
+        LINKTYPE_FDDI = 10,
+        LINKTYPE_PPP_HDLC = 50,
+        LINKTYPE_PPP_ETHER = 51,
+
+        /// @brief 802.11 无线网。
+        LINKTYPE_IEEE802_11 = 105,
+
+        /// @brief 没有发现数据链路层协议，直接发现了没有被包在数据链路层帧中的裸的 IPV4 帧。
+        LINKTYPE_IPV4 = 228,
+
+        /// @brief 没有发现数据链路层协议，直接发现了没有被包在数据链路层帧中的裸的 IPV6 帧。
+        LINKTYPE_IPV6 = 229,
     };
 
     /// @brief 捕获结果。因为捕获缓冲区由 npcap 管理，并且只有 1 个，
