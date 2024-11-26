@@ -54,3 +54,21 @@ std::shared_ptr<pcappp::IPcapInterface> pcappp::Pcap::FindInterfaceByName(std::s
 
     return nullptr;
 }
+
+void pcappp::Pcap::PrintInterfacesDescriptions()
+{
+    std::shared_ptr<base::IEnumerable<std::shared_ptr<pcappp::IPcapInterface>>> interfaces = FindInterfaces();
+    for (std::shared_ptr<pcappp::IPcapInterface> &interface_ : *interfaces)
+    {
+        std::cout << interface_->Description() << std::endl;
+    }
+}
+
+void pcappp::Pcap::PrintInterfacesNames()
+{
+    std::shared_ptr<base::IEnumerable<std::shared_ptr<pcappp::IPcapInterface>>> interfaces = FindInterfaces();
+    for (std::shared_ptr<pcappp::IPcapInterface> &interface_ : *interfaces)
+    {
+        std::cout << interface_->Name() << std::endl;
+    }
+}

@@ -26,5 +26,11 @@ namespace pcappp
         /// @param name
         /// @return
         static std::shared_ptr<pcappp::IPcapInterface> FindInterfaceByName(std::string const &name);
+
+        /// @brief 查找所有网络接口并打印它们的描述。
+        static void PrintInterfacesDescriptions();
+
+        /// @brief 查找所有网络接口并打印它们的设备名。
+        static void PrintInterfacesNames();
     };
 } // namespace pcappp
