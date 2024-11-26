@@ -44,6 +44,7 @@ namespace pcappp
         public base::IJsonSerializable
     {
     public:
+#pragma region 信息
         /// @brief 接口名
         /// @return
         virtual std::string Name() const = 0;
@@ -61,6 +62,7 @@ namespace pcappp
         /// @brief 链路层类型。
         /// @return
         virtual pcappp::LinkTypes LinkType() const = 0;
+#pragma endregion
 
         /// @brief 用默认方式打开设备。
         virtual void Open() = 0;
