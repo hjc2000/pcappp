@@ -17,6 +17,7 @@ int main()
             std::cout << "success" << std::endl;
         }
 
+        std::cout << interface_->LinkType() << std::endl;
         std::cout << interface_->CaptureResult().Timestamp() << std::endl;
         std::cout << interface_->CaptureResult().CaptureLength() << std::endl;
     }

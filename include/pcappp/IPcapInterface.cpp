@@ -84,3 +84,9 @@ std::string base::ToString(pcappp::LinkTypes value)
         }
     }
 }
+
+std::ostream &operator<<(std::ostream &os, pcappp::LinkTypes value)
+{
+    os << base::ToString(value);
+    return os;
+}

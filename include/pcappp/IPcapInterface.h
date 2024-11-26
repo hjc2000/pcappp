@@ -1,6 +1,7 @@
 #pragma once
 #include <base/container/iterator/IEnumerable.h>
 #include <base/string/Json.h>
+#include <iostream>
 #include <pcap/dlt.h>
 #include <pcappp/ICaptureResult.h>
 #include <pcappp/IPcapAddress.h>
@@ -82,4 +83,7 @@ namespace base
     /// @param value
     /// @return
     std::string ToString(pcappp::LinkTypes value);
+
 } // namespace base
+
+std::ostream &operator<<(std::ostream &os, pcappp::LinkTypes value);
