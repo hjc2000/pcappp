@@ -5,6 +5,7 @@
 
 namespace pcappp
 {
+    /// @brief 捕获结果代码。用来指示成功或失败。
     enum class CaptureResultCode
     {
         Success,
@@ -18,7 +19,7 @@ namespace pcappp
     class ICaptureResult
     {
     public:
-        /// @brief 捕获结果代码
+        /// @brief 捕获结果代码。用来指示成功或失败。
         /// @return
         virtual pcappp::CaptureResultCode Code() const = 0;
 
