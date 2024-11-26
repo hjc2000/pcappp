@@ -75,3 +75,11 @@ namespace pcappp
         virtual pcappp::ICaptureResult const &CaptureResult() const = 0;
     };
 } // namespace pcappp
+
+namespace base
+{
+    /// @brief 将 pcappp::LinkTypes （链路层类型）转为字符串。
+    /// @param value
+    /// @return
+    std::string ToString(pcappp::LinkTypes value);
+} // namespace base
