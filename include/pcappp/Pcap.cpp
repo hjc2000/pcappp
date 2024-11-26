@@ -29,7 +29,8 @@ std::shared_ptr<base::IEnumerable<std::shared_ptr<pcappp::IPcapInterface>>> pcap
 
 std::shared_ptr<pcappp::IPcapInterface> pcappp::Pcap::FindInterfaceByDescription(std::string const &description)
 {
-    for (std::shared_ptr<pcappp::IPcapInterface> &interface_ : *FindInterfaces())
+    std::shared_ptr<base::IEnumerable<std::shared_ptr<pcappp::IPcapInterface>>> interfaces = FindInterfaces();
+    for (std::shared_ptr<pcappp::IPcapInterface> &interface_ : *interfaces)
     {
         if (interface_->Description() == description)
         {
@@ -42,7 +43,8 @@ std::shared_ptr<pcappp::IPcapInterface> pcappp::Pcap::FindInterfaceByDescription
 
 std::shared_ptr<pcappp::IPcapInterface> pcappp::Pcap::FindInterfaceByName(std::string const &name)
 {
-    for (std::shared_ptr<pcappp::IPcapInterface> &interface_ : *FindInterfaces())
+    std::shared_ptr<base::IEnumerable<std::shared_ptr<pcappp::IPcapInterface>>> interfaces = FindInterfaces();
+    for (std::shared_ptr<pcappp::IPcapInterface> &interface_ : *interfaces)
     {
         if (interface_->Name() == name)
         {

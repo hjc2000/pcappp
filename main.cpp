@@ -9,12 +9,11 @@ int main()
     std::shared_ptr<pcappp::IPcapInterface> interface_ = pcappp::Pcap::FindInterfaceByDescription("Network adapter 'Intel(R) Wi-Fi 6 AX200 160MHz' on local host");
     if (interface_ != nullptr)
     {
-        std::cout << interface_->ToString() << std::endl;
         interface_->Open();
         interface_->CaptureOnePacket();
         if (interface_->CaptureResult().Code() == pcappp::CaptureResultCode::Success)
         {
-            std::cout << "捕获成功" << std::endl;
+            std::cout << "success" << std::endl;
         }
     }
 
