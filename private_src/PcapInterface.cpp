@@ -31,11 +31,6 @@ std::string pcappp::PcapInterface::Description() const
     return _description;
 }
 
-base::IEnumerable<std::shared_ptr<pcappp::IPcapAddress>> const &pcappp::PcapInterface::Addresses() const
-{
-    return _list;
-}
-
 base::Json pcappp::PcapInterface::ToJson() const
 {
     base::Json root{
@@ -55,6 +50,16 @@ base::Json pcappp::PcapInterface::ToJson() const
     }
 
     return root;
+}
+
+base::IEnumerable<std::shared_ptr<pcappp::IPcapAddress>> const &pcappp::PcapInterface::Addresses() const
+{
+    return _list;
+}
+
+pcappp::LinkTypes pcappp::PcapInterface::LinkType() const
+{
+    return static_cast<pcappp::LinkTypes>(pcap_datalink(_handle.get()));
 }
 
 #pragma endregion

@@ -36,13 +36,17 @@ namespace pcappp
         /// @return
         std::string Description() const override;
 
+        /// @brief 序列化为 json
+        /// @return
+        base::Json ToJson() const override;
+
         /// @brief 迭代设备地址集合。
         /// @return 返回设备地址的可迭代集合的引用。
         base::IEnumerable<std::shared_ptr<pcappp::IPcapAddress>> const &Addresses() const override;
 
-        /// @brief 序列化为 json
+        /// @brief 链路层类型。
         /// @return
-        base::Json ToJson() const override;
+        pcappp::LinkTypes LinkType() const override;
 #pragma endregion
 
         /// @brief 用默认方式打开设备。
