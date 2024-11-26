@@ -26,3 +26,29 @@ std::shared_ptr<base::IEnumerable<std::shared_ptr<pcappp::IPcapInterface>>> pcap
 
     return interface_list;
 }
+
+std::shared_ptr<pcappp::IPcapInterface> pcappp::Pcap::FindInterfaceByDescription(std::string const &description)
+{
+    for (std::shared_ptr<pcappp::IPcapInterface> &interface_ : *FindInterfaces())
+    {
+        if (interface_->Description() == description)
+        {
+            return interface_;
+        }
+    }
+
+    return nullptr;
+}
+
+std::shared_ptr<pcappp::IPcapInterface> pcappp::Pcap::FindInterfaceByName(std::string const &name)
+{
+    for (std::shared_ptr<pcappp::IPcapInterface> &interface_ : *FindInterfaces())
+    {
+        if (interface_->Name() == name)
+        {
+            return interface_;
+        }
+    }
+
+    return nullptr;
+}
