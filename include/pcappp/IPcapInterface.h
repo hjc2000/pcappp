@@ -86,4 +86,8 @@ namespace base
 
 } // namespace base
 
+/// @brief 将 pcappp::LinkTypes 输出到输出流中。
+/// @param os
+/// @param value
+/// @return
 std::ostream &operator<<(std::ostream &os, pcappp::LinkTypes value);
