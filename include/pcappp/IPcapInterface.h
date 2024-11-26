@@ -83,7 +83,6 @@ namespace base
     /// @param value
     /// @return
     std::string ToString(pcappp::LinkTypes value);
-
 } // namespace base
 
 /// @brief 将 pcappp::LinkTypes 输出到输出流中。
