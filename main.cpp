@@ -27,7 +27,7 @@ int main()
         base::ethernet::ReadOnlyEthernetFrame frame{interface_->CaptureResult().Buffer()};
         std::cout << frame.DestinationMac() << std::endl;
         std::cout << frame.SourceMac() << std::endl;
-        std::cout << frame.TypeOrLength() << std::endl;
+        std::cout << base::ToString(frame.TypeOrLength()) << std::endl;
     }
 
     return 0;
