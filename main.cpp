@@ -1,4 +1,4 @@
-#include <base/net/ethernet/ReadOnlyEthernetFrame.h>
+#include <base/net/ethernet/EthernetFrameReader.h>
 #include <base/string/ToHexString.h>
 #include <format>
 #include <iostream>
@@ -24,7 +24,7 @@ int main()
         std::cout << interface_->CaptureResult().Timestamp() << std::endl;
         std::cout << interface_->CaptureResult().CaptureLength() << std::endl;
 
-        base::ethernet::ReadOnlyEthernetFrame frame{interface_->CaptureResult().Buffer()};
+        base::ethernet::EthernetFrameReader frame{interface_->CaptureResult().Buffer()};
         std::cout << frame.DestinationMac() << std::endl;
         std::cout << frame.SourceMac() << std::endl;
         std::cout << base::ToString(frame.TypeOrLength()) << std::endl;
