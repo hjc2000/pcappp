@@ -4,40 +4,40 @@
 
 namespace pcappp
 {
-    class PcapAddress :
-        public pcappp::IPcapAddress
-    {
-    private:
-        std::shared_ptr<base::EndPoint> _address;
-        std::shared_ptr<base::EndPoint> _netmask;
-        std::shared_ptr<base::EndPoint> _broadcast_address;
-        std::shared_ptr<base::EndPoint> _destination_address;
+	class PcapAddress :
+		public pcappp::IPcapAddress
+	{
+	private:
+		std::shared_ptr<base::EndPoint> _address;
+		std::shared_ptr<base::EndPoint> _netmask;
+		std::shared_ptr<base::EndPoint> _broadcast_address;
+		std::shared_ptr<base::EndPoint> _destination_address;
 
-    public:
-        PcapAddress(pcap_addr const &addr);
+	public:
+		PcapAddress(pcap_addr const &addr);
 
-        std::shared_ptr<base::EndPoint> Address() const override
-        {
-            return _address;
-        }
+		std::shared_ptr<base::EndPoint> Address() const override
+		{
+			return _address;
+		}
 
-        std::shared_ptr<base::EndPoint> NetMask() const override
-        {
-            return _netmask;
-        }
+		std::shared_ptr<base::EndPoint> NetMask() const override
+		{
+			return _netmask;
+		}
 
-        std::shared_ptr<base::EndPoint> BroadcastAddress() const override
-        {
-            return _broadcast_address;
-        }
+		std::shared_ptr<base::EndPoint> BroadcastAddress() const override
+		{
+			return _broadcast_address;
+		}
 
-        std::shared_ptr<base::EndPoint> DestinationAddress() const override
-        {
-            return _destination_address;
-        }
+		std::shared_ptr<base::EndPoint> DestinationAddress() const override
+		{
+			return _destination_address;
+		}
 
-        /// @brief 序列化为 json
-        /// @return
-        base::Json ToJson() const override;
-    };
+		/// @brief 序列化为 json
+		/// @return
+		base::Json ToJson() const override;
+	};
 } // namespace pcappp
