@@ -25,9 +25,7 @@ int main()
         std::cout << pcap_interface->CaptureResult().CaptureLength() << std::endl;
 
         base::ethernet::EthernetFrameReader frame{pcap_interface->CaptureResult().Buffer()};
-        std::cout << frame.DestinationMac() << std::endl;
-        std::cout << frame.SourceMac() << std::endl;
-        std::cout << base::ToString(frame.TypeOrLength()) << std::endl;
+        std::cout << frame << std::endl;
     }
 
     return 0;
