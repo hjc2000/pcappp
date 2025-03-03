@@ -3,7 +3,7 @@
 #include <base/net/IPEndPoint.h>
 #include <stdexcept>
 
-std::shared_ptr<base::EndPoint> pcappp::ToEndPoint(sockaddr const &addr)
+std::shared_ptr<base::IEndPoint> pcappp::ToEndPoint(sockaddr const &addr)
 {
 	switch (addr.sa_family)
 	{
@@ -21,7 +21,7 @@ std::shared_ptr<base::EndPoint> pcappp::ToEndPoint(sockaddr const &addr)
 					  buffer.Buffer());
 
 			base::IPAddress ip{std::endian::big, buffer};
-			return std::shared_ptr<base::EndPoint>{new base::IPEndPoint{ip, in_addr->sin_port}};
+			return std::shared_ptr<base::IEndPoint>{new base::IPEndPoint{ip, in_addr->sin_port}};
 		}
 	case AF_IMPLINK:
 		{
@@ -117,7 +117,7 @@ std::shared_ptr<base::EndPoint> pcappp::ToEndPoint(sockaddr const &addr)
 					  buffer.Buffer());
 
 			base::IPAddress ip{std::endian::big, buffer};
-			return std::shared_ptr<base::EndPoint>{new base::IPEndPoint{ip, in_addr->sin6_port}};
+			return std::shared_ptr<base::IEndPoint>{new base::IPEndPoint{ip, in_addr->sin6_port}};
 		}
 	case AF_CLUSTER:
 		{
