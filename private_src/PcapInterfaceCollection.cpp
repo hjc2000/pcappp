@@ -1,5 +1,4 @@
 #include "PcapInterfaceCollection.h"
-#include <iostream>
 #include <PcapInitializer.h>
 
 pcappp::PcapInterfaceCollection::PcapInterfaceCollection(pcap_if_t *interfece_link_list_head_node)
