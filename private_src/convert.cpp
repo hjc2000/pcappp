@@ -1,5 +1,4 @@
 #include "convert.h"
-#include <base/bit/BitConverter.h>
 #include <base/net/IPEndPoint.h>
 #include <stdexcept>
 
