@@ -1,6 +1,5 @@
 #include <base/net/ethernet/EthernetFrameReader.h>
 #include <base/string/ToHexString.h>
-#include <format>
 #include <iostream>
 #include <pcappp/Pcap.h>
 
