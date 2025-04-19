@@ -37,46 +37,41 @@ namespace
 		public base::IEnumerator<pcap_if_t *>
 	{
 	private:
-		pcap_if_t *_head_node = nullptr;
 		pcap_if_t *_current_node = nullptr;
-		bool _is_first_move = true;
 
 	public:
 		Enumerator(pcap_if_t *head_node)
 		{
-			_head_node = head_node;
-			Reset();
+			_current_node = head_node;
 		}
 
-		/// @brief 获取当前值的引用
+		///
+		/// @brief 迭代器当前是否指向尾后元素。
+		///
 		/// @return
-		pcap_if_t *&CurrentValue() override
+		///
+		virtual bool IsEnd() const override
+		{
+			return _current_node == nullptr;
+		}
+
+		///
+		/// @brief 获取当前值的引用。
+		///
+		/// @return ItemType&
+		///
+		virtual pcap_if_t *&CurrentValue() override
 		{
 			return _current_node;
 		}
 
-		/// @brief 迭代器前进到下一个值
-		/// @return
-		bool MoveNext() override
+		///
+		/// @brief 递增迭代器的位置。
+		///
+		///
+		virtual void Add() override
 		{
-			if (_is_first_move)
-			{
-				_is_first_move = false;
-			}
-			else
-			{
-				_current_node = _current_node->next;
-			}
-
-			return _current_node != nullptr;
-		}
-
-		/// @brief 将迭代器重置到容器开始的位置。
-		/// @note 开始位置是第一个元素前。也就是说重置后，要调用一次 MoveNext 才能获取到第一个值。
-		void Reset() override
-		{
-			_current_node = _head_node;
-			_is_first_move = true;
+			_current_node = _current_node->next;
 		}
 	};
 } // namespace
