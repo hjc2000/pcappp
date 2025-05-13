@@ -14,7 +14,7 @@ endif()
 
 
 # 编译为动态库
-add_library(${ProjectName})
+add_library(${ProjectName} STATIC)
 target_import_src(${ProjectName})
 target_import_base(${ProjectName} PUBLIC)
 target_import_npcap(${ProjectName} PUBLIC)
@@ -22,10 +22,7 @@ target_import_npcap(${ProjectName} PUBLIC)
 # 添加测试程序
 if(1)
 	add_executable(test ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
-
-	target_link_libraries(${ProjectName} PUBLIC -Wl,--start-group)
 	target_link_libraries(test ${ProjectName})
-	target_link_libraries(${ProjectName} PUBLIC -Wl,--end-group)
 
 	install(TARGETS test
 			RUNTIME DESTINATION bin
