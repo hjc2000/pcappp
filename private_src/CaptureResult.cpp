@@ -1,4 +1,5 @@
 #include "CaptureResult.h"
+#include <chrono>
 
 pcappp::CaptureResult::CaptureResult(pcappp::CaptureResultCode result_code,
 									 pcap_pkthdr const &packet_infos,
