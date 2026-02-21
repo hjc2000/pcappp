@@ -38,6 +38,7 @@ namespace
 	{
 	private:
 		pcap_if_t *_current_node = nullptr;
+		base::IEnumerator<pcap_if_t *>::Context_t _context{};
 
 	public:
 		Enumerator(pcap_if_t *head_node)
@@ -73,7 +74,18 @@ namespace
 		{
 			_current_node = _current_node->next;
 		}
+
+		///
+		/// @brief 派生类需要提供一个该对象。
+		///
+		/// @return
+		///
+		virtual base::IEnumerator<pcap_if_t *>::Context_t &Context() override
+		{
+			return _context;
+		}
 	};
+
 } // namespace
 
 std::shared_ptr<base::IEnumerator<pcap_if_t *>> pcappp::PcapInterfaceCollection::GetEnumerator()
