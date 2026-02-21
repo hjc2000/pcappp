@@ -1,4 +1,4 @@
-#include "IPcapInterface.h"
+#include "IPcapInterface.h" // IWYU pragma: keep
 
 base::Json pcappp::IPcapInterface::ToJson() const
 {

@@ -1,6 +1,6 @@
 #pragma once
-#include <pcap/pcap.h>
-#include <pcappp/IPcapAddress.h>
+#include "pcap/pcap.h"
+#include "pcappp/IPcapAddress.h"
 
 namespace pcappp
 {

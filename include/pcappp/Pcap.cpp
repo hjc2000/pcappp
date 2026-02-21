@@ -1,7 +1,7 @@
-#include "Pcap.h"
-#include <base/container/List.h>
-#include <PcapInitializer.h>
-#include <PcapInterface.h>
+#include "Pcap.h" // IWYU pragma: keep
+#include "base/container/List.h"
+#include "PcapInitializer.h"
+#include "PcapInterface.h"
 
 std::string pcappp::Pcap::Version()
 {

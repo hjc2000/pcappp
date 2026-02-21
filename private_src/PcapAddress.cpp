@@ -1,5 +1,5 @@
 #include "PcapAddress.h"
-#include <convert.h>
+#include "convert.h"
 
 pcappp::PcapAddress::PcapAddress(pcap_addr const &addr)
 {

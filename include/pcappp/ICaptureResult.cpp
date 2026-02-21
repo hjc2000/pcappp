@@ -1,1 +1,1 @@
-#include "ICaptureResult.h"
+#include "ICaptureResult.h" // IWYU pragma: keep

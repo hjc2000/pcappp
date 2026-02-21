@@ -1,6 +1,6 @@
 #pragma once
-#include <pcap/pcap.h>
-#include <pcappp/ICaptureResult.h>
+#include "pcap/pcap.h"
+#include "pcappp/ICaptureResult.h"
 
 namespace pcappp
 {
