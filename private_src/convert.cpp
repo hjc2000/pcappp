@@ -1,4 +1,4 @@
-#include "convert.h"
+#include "convert.h" // IWYU pragma: keep
 #include <base/net/IPEndPoint.h>
 #include <stdexcept>
 

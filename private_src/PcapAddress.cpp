@@ -1,4 +1,4 @@
-#include "PcapAddress.h"
+#include "PcapAddress.h" // IWYU pragma: keep
 #include "convert.h"
 
 pcappp::PcapAddress::PcapAddress(pcap_addr const &addr)

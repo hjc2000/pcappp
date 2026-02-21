@@ -1,4 +1,4 @@
-#include "PcapInterface.h"
+#include "PcapInterface.h" // IWYU pragma: keep
 
 pcappp::PcapInterface::PcapInterface(pcap_if_t *interfece_)
 	: _name(interfece_->name),

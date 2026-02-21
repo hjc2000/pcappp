@@ -1,4 +1,4 @@
-#include "CaptureResult.h"
+#include "CaptureResult.h" // IWYU pragma: keep
 #include <chrono>
 
 pcappp::CaptureResult::CaptureResult(pcappp::CaptureResultCode result_code,

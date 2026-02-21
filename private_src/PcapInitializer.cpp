@@ -1,4 +1,4 @@
-#include "PcapInitializer.h"
+#include "PcapInitializer.h" // IWYU pragma: keep
 
 void pcappp::PcapInitializer::Initialize()
 {

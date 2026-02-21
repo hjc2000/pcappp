@@ -1,4 +1,4 @@
-#include "PcapInterfaceCollection.h"
+#include "PcapInterfaceCollection.h" // IWYU pragma: keep
 #include "PcapInitializer.h"
 
 pcappp::PcapInterfaceCollection::PcapInterfaceCollection(pcap_if_t *interfece_link_list_head_node)
